@@ -24,7 +24,7 @@
                         <a class="btn btn-primary btn-sm" href="{{ route('admin.posts.edit',$post) }}">Editar</a>
                     </td>
                     <td width="10px">
-                        <form action="{{ route('admin.posts.destroy',$posts) }}">
+                        <form action="{{ route('admin.posts.destroy',$post) }}" method="POST">
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
