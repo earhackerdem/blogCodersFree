@@ -239,6 +239,11 @@ return [
             'route'       => 'admin.home',
             'icon'        => 'fas fa-fw fa-tachometer-alt',
         ],
+        [
+            'text'        => 'Usuarios',
+            'route'       => 'admin.users.index',
+            'icon'        => 'fas fa-fw fa-users',
+        ],
         ['header' => 'ADMINISTRADOR'],
         [
             'text' => 'Categorías',
