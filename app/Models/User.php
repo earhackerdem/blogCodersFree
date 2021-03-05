@@ -60,7 +60,7 @@ class User extends Authenticatable
     ];
 
     //Relación uno a muchos
-    public function posts()
+    public function posts() //user_id
     {
         return $this->hasMany(Post::class);
     }
