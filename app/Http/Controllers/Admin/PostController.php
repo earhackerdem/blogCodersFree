@@ -7,9 +7,8 @@ use App\Http\Requests\PostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
-use GuzzleHttp\RedirectMiddleware;
-use Illuminate\Contracts\Cache\Store;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+
 
 use Illuminate\Support\Facades\Storage;
 
@@ -69,6 +68,8 @@ class PostController extends Controller
             $post->tags()->attach($request->tags);
         }
 
+        Cache::flush();
+
         return redirect()->route('admin.posts.edit',$post);
     }
 
@@ -121,6 +122,8 @@ class PostController extends Controller
             $post->tags()->sync($request->tags);
         }
 
+        Cache::flush();
+
         return redirect()->route('admin.posts.edit',$post)->with('info','El post se actualizó con éxito');
 
     }
@@ -136,6 +139,7 @@ class PostController extends Controller
         $this->authorize('author',$post);
 
         $post->delete();
+        Cache::flush();
         return redirect()->route('admin.posts.index')->with('info','El post se elimino con éxito');
     }
 }
